@@ -22,12 +22,9 @@ public class LoginServlet extends HttpServlet {
         String username = req.getParameter("username").toString();
         String password = req.getParameter("password").toString();
         PrintWriter writer = resp.getWriter();
-        Optional<User> user = userDao.find(username);
-        if(!user.isEmpty()){
-            if(user.get().getPassword().equals(password)) writer.println("ok");
-            else writer.println("err");
-        }
-        else writer.println("err");
+        User user = userDao.find(username);
+        if(user.getPassword().equals(password)) writer.println("ok");
+
     }
 
 }

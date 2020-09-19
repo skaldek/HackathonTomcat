@@ -1,7 +1,6 @@
 package com.hack.dao;
 
 import org.hibernate.cfg.Configuration;
-import java.util.Optional;
 import java.util.List;
 import com.hack.models.User;
 
@@ -20,15 +19,15 @@ public class UserDao implements CrudDao<User>{
         configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL95Dialect");
         configuration.setProperty("hibernate.hbm2ddl.auto", "update");
         configuration.addAnnotatedClass(User.class);
+        configuration.setProperty("connection.pool_size", "10");
         configuration.setProperty("hibernate.show_sql", "true");
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         session = sessionFactory.openSession();
     }
 
-    public Optional<User> find(String username){
-        User user = (User) session.createQuery("from User user where user.username = :name", User.class).setParameter("name", username).getSingleResult();
-        if(user!= null) return Optional.of(user);
-        return Optional.empty();
+    public User find(String id){
+        User user = (User) session.createQuery("from User user where user.username = :name", User.class).setParameter("name", id).getSingleResult();
+        return user;
     }
 
     public void save(User user){
@@ -48,9 +47,4 @@ public class UserDao implements CrudDao<User>{
         session.delete(user);
         session.getTransaction().commit();;
     }
-
-    public List<User> findAll(){
-        return session.createQuery("from User user", User.class).getResultList();
-    }
-    
 }
