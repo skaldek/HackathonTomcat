@@ -25,6 +25,7 @@ public class ApplicationListServlet extends HttpServlet{
         String json = new Gson().toJson(applications);
         PrintWriter writer = resp.getWriter();
         writer.println(json);
+        applicationDao.close();
     }
     
 }

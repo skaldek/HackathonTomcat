@@ -20,6 +20,7 @@ public class AddApplicationServlet extends HttpServlet{
         String userId = req.getParameter("userId");
         String description = req.getParameter("description");
         applicationDao.save(new Application(userId, description));
+        applicationDao.close();
     }
     
 }

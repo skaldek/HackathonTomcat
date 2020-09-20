@@ -13,6 +13,8 @@ public class Application {
     private String user_id;
     @JoinColumn(name = "description")
     private String description;
+    @JoinColumn(name = "state")
+    private String state;
 
     public Application(){}
 
@@ -53,5 +55,13 @@ public class Application {
 
     public String getDescription(){
         return description;
+    }
+
+    public void setState(String state){
+        this.state = state;
+    }
+
+    public String getState(){
+        return state;
     }
 }

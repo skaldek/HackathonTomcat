@@ -19,6 +19,7 @@ public class RegServlet extends HttpServlet{
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         userDao.save(new User(username, password));
+        userDao.close();
 
     }
     

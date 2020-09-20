@@ -24,6 +24,7 @@ public class LoginServlet extends HttpServlet {
         PrintWriter writer = resp.getWriter();
         User user = userDao.find(username);
         if(user.getPassword().equals(password)) writer.println("ok");
+        userDao.close();
 
     }
 

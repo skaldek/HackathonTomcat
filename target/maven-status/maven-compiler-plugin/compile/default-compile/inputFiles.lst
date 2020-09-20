@@ -1,5 +1,6 @@
 /home/igo/Desktop/server/src/main/java/com/hack/servlets/RegServlet.java
 /home/igo/Desktop/server/src/main/java/com/hack/servlets/AddApplicationServlet.java
+/home/igo/Desktop/server/src/main/java/com/hack/servlets/CheckApplicationServlet.java
 /home/igo/Desktop/server/src/main/java/com/hack/dao/UserDao.java
 /home/igo/Desktop/server/src/main/java/com/hack/dao/ApplicationDao.java
 /home/igo/Desktop/server/src/main/java/com/hack/models/Application.java

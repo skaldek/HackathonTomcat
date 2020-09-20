@@ -47,4 +47,9 @@ public class UserDao implements CrudDao<User>{
         session.delete(user);
         session.getTransaction().commit();;
     }
+
+    public void close(){
+        session.getTransaction().commit();
+        session.close();
+    }
 }

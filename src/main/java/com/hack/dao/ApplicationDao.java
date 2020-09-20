@@ -48,4 +48,9 @@ public class ApplicationDao implements CrudDao<Application>{
     public List<Application> findAllUser(String userId){
         return session.createQuery("from Application application where application.user_id = :userId", Application.class).setParameter("userId", userId).getResultList();
     }
+
+    public void close(){
+        session.getTransaction().commit();
+        session.close();
+    }
 }
